@@ -32,6 +32,14 @@
         </li>
         <!-- End Menu Dashboard -->
 
+        <!-- Menu Agama -->
+        <li class="nav-item">
+          <a href="{{url("absen")}}" class="nav-link">
+            <i class="nav-icon fas fa-database"></i>
+            <p>Riwayat Absen</p>
+          </a>
+        </li>
+        <!-- End Menu Agama -->
         <!-- Menu Provinsi -->
         <li class="nav-item">
           <a href="{{url("provinsi")}}" class="nav-link">
@@ -40,25 +48,6 @@
           </a>
         </li>
         <!-- End Menu Provinsi -->
-
-        <!-- Menu Agama -->
-        <li class="nav-item">
-          <a href="{{url("agama")}}" class="nav-link">
-            <i class="nav-icon fas fa-database"></i>
-            <p>Agama</p>
-          </a>
-        </li>
-        <!-- End Menu Agama -->
-
-        <!-- Menu Pengguna -->
-        <li class="nav-item">
-          <a href="{{url("pengguna")}}" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
-            <p>Pengguna</p>
-          </a>
-        </li>
-        <!-- Menu Pengguna -->
-
       </ul>
     </nav>
   </div>

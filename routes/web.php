@@ -3,11 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\ProvinsiController;
-use App\Http\Controllers\PenggunaController;
-use App\Http\Controllers\LoginAdminController;
-use App\Http\Controllers\AgamaController;
-use App\Models\Admin;
-use League\CommonMark\Extension\CommonMark\Node\Block\ListData;
+use App\Http\Controllers\AbsenController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,36 +16,20 @@ use League\CommonMark\Extension\CommonMark\Node\Block\ListData;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group([
-    'prefix' => config('admin.prefix'),
-    'namespaces' => 'app\http\contollers'
-], function(){
-    Route::get('auth/login', 'LoginAdminController@formlogin')->name('admin.login');
-    Route::post('auth/login', 'LoginAdminController@login');
-
-    Route::middleware('[Auth:admin]')->group(function(){
-        Route::post('logout', 'LoginAdminController@logout')->name('admin.logout');
-        Route::view('/', 'dashboard')->name('dashboard');
-        Route::view('/Post', 'data-post')->name('post')->middleware('can:role, "admin","editor"');
-        Route::view('/admin', 'data-admin')->name('admin')->middleware('can:role, "admin",');
-    });
-});
-
 Route::get('/', [BerandaController::class, 'index']);
-Route::get('dashboard', [BerandaController::class, 'index']);
+Route::get('dashboard', [BerandaController::class, 'index'])->name('/dashboard');
 
-// Routes data Provinsi
+Route::get('register', [UserController::class, 'register'])->name('register');
+Route::post('register', [UserController::class, 'register_action'])->name('register.action');
+Route::get('login', [UserController::class, 'login'])->name('login');
+Route::post('login', [UserController::class, 'login_action'])->name('login.action');
+Route::get('password', [UserController::class, 'password'])->name('password');
+Route::post('password', [UserController::class, 'password_action'])->name('password.action');
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
+
+
 Route::get('provinsi', [ProvinsiController::class, 'index']);
-Route::post('provinsi', [ProvinsiController::class, 'index']);
 
 // Routes Data Agama
-Route::get('agama', [AgamaController::class, 'index']);
-Route::post('/agama/listdata', [AgamaController::class, 'listData'])->name('agama.listData');
-Route::get('/agama/form/{id}', [AgamaController::class, 'form']);
-Route::post('/agama', [AgamaController::class, 'store']);
-Route::get('/agama/form', [AgamaController::class, 'form']);
-Route::post('/agama/delete/{id}', [AgamaController::class, 'destroy']);
-
-// Routes pengguna
-Route::get('pengguna', [PenggunaController::class, 'index']);
-Route::post('pengguna/form', [PenggunaController::class, 'form']);
+Route::get('absen', [AbsenController::class, 'index']);
+Route::get('absen', [AbsenController::class, 'absen']);

@@ -9,16 +9,11 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
-            <a class="nav-link" href="#">
-                <i class="far fa-question-circle"></i>
-            </a>
+            <form>
+            </form>
         </li>
         <li>
             <form>
-                @csrf
-                <button type="submit" class="nav-link btn btn-danger" style="color:white">
-                    Keluar <i class="fas fa-sign-out-alt" style="margin-left:7px;"></i>
-                </button>
             </form>
         </li>
     </ul>
